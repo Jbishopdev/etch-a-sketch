@@ -43,6 +43,7 @@ button {
 }
  .div {
   display: block;
+  transition: background-color 0.3s ease-in-out;
   background-color: rgb(243, 236, 236);
   border: 1px solid white;
  }
