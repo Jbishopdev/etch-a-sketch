@@ -2,18 +2,13 @@ const container = document.querySelector("#container");
 const greyscale = document.querySelector("#greyscale");
 const colors = document.querySelector("#colors");
 const clear = document.querySelector("#clear");
+const shade = document.querySelector("#shade");
 const resizeGrid = document.querySelector("#resize");
 const divs = [];
 
 
-for (let i = 0; i < 256; i++) { // Create divs
-  const div = document.createElement("div");
-  div.style.width = "50px";
-  div.style.height = "50px";
-  div.classList.add("div");
-  divs.push(div);
-  container.appendChild(div);
-}
+createGrid(16);
+
 
 greyscale.addEventListener("click", () => {
   divs.forEach((div) => {
@@ -35,20 +30,21 @@ colors.addEventListener("click", () =>{
   });
 })
 
+
 clear.addEventListener("click", () => {
   divs.forEach((div) => {
-    div.style.backgroundColor = "white";  // Reset to white color
+    div.style.backgroundColor = "rgb(243, 236, 236)";  // Reset to white color
   });
 });
 
 function createGrid (size) {
   container.innerHTML = "";
-  const divSize = 800/size;
+  const divSize = 750/size;
 
   for (let i = 0; i < (size * size); i++) { // Create divs
     const div = document.createElement("div");
-    div.style.width = `${divSize}px`;
-    div.style.height = `${divSize}px`;
+    div.style.width = `${divSize - 2}px`;
+    div.style.height = `${divSize - 2}px`;
     div.classList.add("div");
     divs.push(div);
     container.appendChild(div);
