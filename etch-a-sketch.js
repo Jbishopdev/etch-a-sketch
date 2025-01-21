@@ -2,13 +2,14 @@ const container = document.querySelector("#container");
 const greyscale = document.querySelector("#greyscale");
 const colors = document.querySelector("#colors");
 const clear = document.querySelector("#clear");
+const resizeGrid = document.querySelector("#resize");
 const divs = [];
+
 
 for (let i = 0; i < 256; i++) { // Create divs
   const div = document.createElement("div");
-  div.style.width = "18px";
-  div.style.height = "18px";
-  div.style.border = "1px solid black";
+  div.style.width = "50px";
+  div.style.height = "50px";
   div.classList.add("div");
   divs.push(div);
   container.appendChild(div);
@@ -39,3 +40,25 @@ clear.addEventListener("click", () => {
     div.style.backgroundColor = "white";  // Reset to white color
   });
 });
+
+function createGrid (size) {
+  container.innerHTML = "";
+  const divSize = 800/size;
+
+  for (let i = 0; i < (size * size); i++) { // Create divs
+    const div = document.createElement("div");
+    div.style.width = `${divSize}px`;
+    div.style.height = `${divSize}px`;
+    div.classList.add("div");
+    divs.push(div);
+    container.appendChild(div);
+  }
+
+}
+
+resizeGrid.addEventListener("click", () => {
+  const gridSize = parseInt(prompt("Enter grid size (Max 100):"));
+  if (gridSize <= 100 && gridSize > 0) {
+    createGrid(gridSize);
+  }
+})
