@@ -2,7 +2,6 @@ const container = document.querySelector("#container");
 const greyscale = document.querySelector("#greyscale");
 const colors = document.querySelector("#colors");
 const clear = document.querySelector("#clear");
-const shade = document.querySelector("#shade");
 const resizeGrid = document.querySelector("#resize");
 const divs = [];
 let currentMode = null;
@@ -11,6 +10,7 @@ createGrid(16);
 
 container.addEventListener("mouseover", (event) => {  // event delegation
   if (event.target.classList == ("div")) {
+
     if (currentMode === "greyscale") {   
       const randomGrey = Math.floor(Math.random() * 256);
       event.target.style.backgroundColor = `rgb(${randomGrey}, ${randomGrey}, ${randomGrey})`;
@@ -20,7 +20,6 @@ container.addEventListener("mouseover", (event) => {  // event delegation
       const randomBlue = Math.floor(Math.random() * 256);
       event.target.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
     }
-
   }
 })
 
